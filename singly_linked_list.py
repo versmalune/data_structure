@@ -2,17 +2,17 @@ class SinglyLinkedList:
     class Node:
         def __init__(self, value):
             self.value = value
-            self.next = None #link 하나
+            self.next = None # a single link
     
     def __init__(self):
         self.head = None
 
-    def insert_head(self, value): #head는 None -> node 생성하고 그의 next에도 node 연결
-        #node 생성
+    def insert_head(self, value): # init head = None, create node and connect it to a new node by next
+        # create node
         node = self.Node(value)
-        #node의 next를 다음 node에 연결
+        # connect newly created node's next to the previous head node
         node.next = self.head
-        #head가 node 가리킴
+        # head pointing the newly created node
         self.head = node 
 
     def insert_tail(self, value):
@@ -22,7 +22,7 @@ class SinglyLinkedList:
             return
         p = self.head
         while p.next:
-            p = p.next #O(n)
+            p = p.next # O(n)
         p.next = node
 
 
@@ -48,6 +48,6 @@ list.insert_tail(2)
 p = list.head
 while p:
     print(p.value, end = " ")
-    p = p.next # 한 바퀴 돔
+    p = p.next # makes one round
 print()
-    # 출력 결과 : 10 5
+    # result: 10 5
