@@ -11,7 +11,7 @@ def fibonacci(n):
 for i in range(11):
     print("f(%d) = %d" % (i, fibonacci(i)))
 
-""" 수행 예: 
+""" 
 f(0) = 0
 f(1) = 1
 f(2) = 1
