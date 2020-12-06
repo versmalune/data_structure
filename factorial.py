@@ -16,7 +16,7 @@ def factorial2(n):
     return result
 # time complexity: big o(n)
 
-# Big O notation이 같을 경우 두 연산 속도에 큰 차이 없음
+# similar time when Big O notation is the same
 
 print(factorial2(5))
 print(factorial1(5))
