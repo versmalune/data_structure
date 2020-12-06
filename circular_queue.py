@@ -1,19 +1,14 @@
-"""
-학번: 60171670
-이름: 홍유진
-"""
 class CircularQueue:  
     def __init__(self, max_size):
         self.max_size = max_size + 1
-        self.queue = [None] * self.max_size #큐 사이즈 정의
+        self.queue = [None] * self.max_size # define queue size
         self.front = 0
         self.rear = 0
 
     def enqueue(self, data):
-        # 원형 큐에 data를 추가
-        # 이미 큐가 full인 경우 data추가하지 않고 None을 반환
-        # 성공적으로 enqueue한 경우 True반환
-        # 아래에 코드를 완성하시오.       
+        # adds data to the queue
+        # if full, do not add data and return None
+        # if enqueued successfully, return True
         if self.is_full():
             return None
         else:
@@ -22,9 +17,8 @@ class CircularQueue:
             return True
 
     def dequeue(self):
-        # 큐가 비어 있는 경우 None을 반환
-        # 그렇지 않은 경우 data를 반환
-        # 아래에 코드를 완성하시오.
+        # if the queue is empty, return None
+        # else, return the data in the queue
         if self.is_empty():
             return None
         else:
@@ -34,24 +28,23 @@ class CircularQueue:
             return pop_item
 
     def is_full(self):
-        # 큐가 꽉 찼으면 True, 아니면 False
-        # 아래에 코드를 완성하시오.
+        # if the queue is full, return True
+        # else, return False
         if (self.rear + 1) % self.max_size == self.front:
             return True
         else:
             return False
 
     def is_empty(self):
-        # 큐가 비었으면 True, 아니면 False
-        # 아래에 코드를 완성하시오.
+        # if the queue is empty, return True
+        # else, return False
         if self.rear == self.front:
             return True
         else:
             return False
 
     def size(self):
-        # 현재 큐에 몇 개의 item이 있는지 개수를 반환
-        # 아래에 코드를 완성하시오.
+        # returns the current number of items in the queue
         size = self.rear - self.front
         return size
 
@@ -88,8 +81,7 @@ if __name__ == "__main__":
 
     print(len(q.queue)) # should be 4. list 자체의 크기는 변하지 않아야 함!!!
 
-# 아래는 위 코드 테스트를 위해서 만들어놓은 샘플입니다. 수정하지 마세요.
-# 다음과 같은 결과가 나와야 합니다.
+
 """
 Empty? True , Full? False , Size= 0
 Enque 10 True
