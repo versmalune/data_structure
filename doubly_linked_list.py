@@ -1,8 +1,4 @@
-"""
-학번: 60171670
-이름: 홍유진
-"""
-class LinkedList:
+class DoublyLinkedList:
     class Node:
         def __init__(self, value):
             self.value = value
@@ -56,7 +52,7 @@ class LinkedList:
             self.remove(self.head.prev)
 
     def traverse(self, dir = 1):
-        # generator를 이용하여 리스트를 정방향(dir=1) 혹은 역방향(dir=-1)으로 순회할 수 있도록 함
+        # uses generator to traverse the list (dir = 1: forward, dir = reverse)
         node = self.head.next if dir == 1 else self.head.prev
         while node != self.head:
             yield node
@@ -82,7 +78,7 @@ class LinkedList:
 
 
 if __name__ == "__main__":
-    list = LinkedList()
+    list = DoublyLinkedList()
     list.print()
     list.print(-1)
     print("IS_EMPTY?", list.is_empty())
