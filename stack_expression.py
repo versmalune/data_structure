@@ -1,8 +1,3 @@
-"""
-학번: 60171670
-이름: 홍유진
-"""
-
 from stack import Stack
 
 def infix_to_postfix(infixexp):
@@ -18,7 +13,7 @@ def infix_to_postfix(infixexp):
     token_list = infixexp.split()
 
     for token in token_list:
-        if token in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or token in '0123456789': #숫자일 떄
+        if token in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or token in '0123456789'
             ret.append(token)
         elif token == '(':
             s.push(token)
@@ -27,7 +22,7 @@ def infix_to_postfix(infixexp):
             while top_token != '(':
                 ret.append(top_token)
                 top_token = s.pop()
-        else: #연산자일 때
+        else:
             while (not s.is_empty()) and (prec[s.peek()] >= prec[token]):
                 ret.append(s.pop())
             s.push(token)
@@ -39,9 +34,9 @@ def infix_to_postfix(infixexp):
     return " ".join(ret)
 
 
-# postfix 계산하기
-# 이미 postfix로 변환된 값을 계산만 하면 됨
-# 연산자 입력될 때까지 계속 숫자를 stack에 push -> 연산자 하나 입력 -> stack에서 2개 pop -> 계산 -> 계산 결과값 다시 stack에 push -> 반복
+# evaluating postfix expression
+# push all numbers to the stack until operator -> pop 2 numbers from stack and calculate with the operator
+# -> push the result to the stack -> repeat
 def eval_postfix(str):
     stack = Stack()
     token_list2 = str.split()
@@ -75,7 +70,8 @@ if __name__ == '__main__':
     expr_test("( 1 + 2 ) * 3 - 4 * ( 2 / ( 4 - ( 5 + 2 ) ) )")
     expr_test("( 3 + 5 * 2 ) * ( 3 - 1 )")
 
-# 실행 결과: 
+
+    
 # '4 + 3 - 2' = > '4 3 + 2 -' = 5.000000
 # '4 + 3 - 4 / 2' = > '4 3 + 4 2 / -' = 5.000000
 # '1 + 2 * 3 - 4 * ( 2 / ( 4 - ( 5 + 2 ) ) )' = > '1 2 3 * + 4 2 4 5 2 + - / * -' = 9.666667
