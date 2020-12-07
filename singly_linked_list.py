@@ -32,6 +32,50 @@ class SinglyLinkedList:
         node = self.head
         self.head = node.next
         return node.value
+    
+    
+    
+    def traverse(self): # generator
+        p = self.head
+        while p:
+            yield p.value # when yield, stop running and return iterator
+            p = p.next
+
+    def find(self, value):
+        p = self.head
+        while p:
+            if value == p.value:
+                return True
+            p = p.next
+        return False
+        
+        # when using generator
+        # for val in self.traverse():
+            # if value == val:
+                # return True
+            # return False
+
+    def get_at(self, idx):
+        cnt = 0
+        p = self.head
+        while p:
+            if cnt == idx:
+                return p.value
+            cnt += 1
+            p = p.next
+        return None
+    
+     def print(self):
+        p = self.head # points the current node
+        while p: # while there is a value in the node
+            print(p.value, end='->')
+            p = p.next # print the value of the node, and change p to the next node
+        print()
+
+        # when using generator
+        # for val in self.traverse():
+            # print(val, end = '->')
+        # print()
 
 
 list = SinglyLinkedList()
