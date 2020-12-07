@@ -1,9 +1,9 @@
 import unittest
 from stack import Stack
-class TestStack(unittest.TestCase): #unittest상속
+class TestStack(unittest.TestCase): # inherit unittest
     def test_is_empty(self):
         s = Stack()
-        self.assertTrue(s.is_empty) #참이 아니면 무조건 fail
+        self.assertTrue(s.is_empty)
         s.push(1)
         self.assertTrue(s.is_empty)
         s.pop()
