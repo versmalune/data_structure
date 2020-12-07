@@ -3,7 +3,8 @@ class Stack: #first in last out
         self.list = []
 
     def is_empty(self):
-        return not self.list #list return -> boolean으로 return 값 받음
+        return not self.list 
+        #return boolean
 
     def push(self, item):
         self.list.append(item)
