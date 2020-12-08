@@ -1,4 +1,5 @@
 class MaxHeap:
+    
     def __init__(self):
         self.list = []
     
@@ -10,7 +11,6 @@ class MaxHeap:
 
     def __right(self, i):
         return 2 * i + 2
-
 
     def push(self, value):
         # Big O : log(n)
@@ -34,7 +34,6 @@ class MaxHeap:
         else:
             return right
 
-
     def pop(self):
         if (len(self.list)) == 0:
             return None
@@ -51,7 +50,6 @@ class MaxHeap:
             p = c
             c = self.__bigger_child(p)
         return ret
-
 
     def peek(self):
         if (len(self.list)) == 0:
