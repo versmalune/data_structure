@@ -43,16 +43,12 @@ class BST:
     def height(self):
         return self.__height(self.root)
         
-    #def search(self, key):
-
-
-
-
+    # def search(self, key):
 
 
 t = BST()
 for _ in range(100):
     t.add(random.randint(0, 1000))
 t.inorder()
-print(t.height()) #10 #아무리 random 숫자를 개많이 넣어도 높이가 기하급수적으로 변하지 않음!!
-#t.search(10)
+print(t.height()) # 10 # the height doesn't increase exponentially
+# t.search(10)
