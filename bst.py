@@ -1,7 +1,3 @@
-"""
-학번: 60171670
-이름: 홍유진
-"""
 import random
 import pandas as pd
 
@@ -23,8 +19,7 @@ class BinarySearchTree:
         self.value_count += 1
 
     def __insert(self, node, key, value):
-        # 여기에 Tree의 노드에 key, value를 insert하는 알고리즘을 작성하시오.
-        # 새로운 키가 추가되면 key_count도 증가시켜야 함 (동일한 키가 들어오는 경우는 증가 안함)
+        # when a new key inserted, key_count must be increased by 1 (except when the new key is already in the tree)
         if node is None:
             node = self.Node(key, value, None, None)
             self.key_count += 1
@@ -56,8 +51,8 @@ class BinarySearchTree:
         return self.__find(self.root, key)
 
     def __find(self, node, key):
-        # 키가 존재하지 않으면 [] (빈 리스트)를 반환하시오.
-        # 키가 존재하면 node.value를 반환하시오.'
+        # if the key exists, return the value of the corresponding node
+        # else, return [] (empty list)
         if node is None:
             return [] #node is not None
         elif node.key == key:
@@ -71,7 +66,7 @@ class BinarySearchTree:
         return self.__height(self.root)
 
     def __height(self, node):
-        # 주어진 노드의 높이를 반환하는 알고리즘을 작성하시오.
+        # returns the height of the given node
         if not node:
             return 0
         l = self.__height(node.left)
@@ -86,7 +81,7 @@ def print_stat(tree):
 
 if __name__ == "__main__":
     #-------------------------------------------------
-    # 간단한 BST 테스트
+    # simple bst test
     tree = BinarySearchTree()
     print_stat(tree)
     tree.insert(5, "F")
@@ -108,7 +103,7 @@ if __name__ == "__main__":
     print_stat(tree)
 
    # -------------------------------------------------
-    # 10만개 데이터 넣는 실험
+    # insert 100,000 datas to the tree
     t = BinarySearchTree()
     for i in range(100000):
         k = random.randint(0, 100000)
@@ -116,24 +111,21 @@ if __name__ == "__main__":
     print_stat(t)
 
     # #-------------------------------------------------
-    # 세익스피어의 희곡에서 단어를 검색하는 실험
-    # 단어를 입력하면 해당 단어가 나오는 희곡의 라인을 검색해줌.
+    # search for a word from Shakespeare plays, returns the line with the word
     bst = BinarySearchTree()
-
-    # csv 파일을 읽어들인다.
     df = pd.read_csv('Shakespeare_data.csv', dtype=str)
     print("Indexing all data ...")
     for index, row in df.iterrows():
-        # 대사를 단어단위로 잘라 keys 리스트에 저장하고, 전체 행은 합쳐 value에 저장한다.
+        # slice by word and insert it to the key, and the whole row to the value
         keys = [x.upper() for x in row[5].split(" ")]
         value = " ".join([x for x in row if str(x) != 'nan'])
         for key in keys:
-            # 각 key, value를 트리에 저장한다.
+            # insert each (key, value) pair to the tree
             bst.insert(key, value)
     print("Done")
     print_stat(bst)
     while True:
-        # 사용자에게 keyword를 입력받아서 트리에서 찾아준다.
+        # get input keyword from the user and search for it from the tree
         keyword = input(">> Enter keyword ('\\q' for quit) : ")
         if keyword == '\\q':
             break
